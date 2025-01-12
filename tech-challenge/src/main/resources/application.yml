@@ -3,7 +3,7 @@ spring:
     name: "tech-challenge-2-fast-food-api"
 
   datasource:
-    url: jdbc:postgresql://localhost:5446/postgres
+    url: jdbc:postgresql://localhost:5446/fastfood-api
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver

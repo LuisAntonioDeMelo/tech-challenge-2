@@ -7,8 +7,7 @@ import java.util.List;
 public interface PedidoUseCase {
     Pedido criarPedido(Pedido pedido);
     Pedido alterarSituacaoPedido(Long id, String situacaoPedido);
-    public List<Pedido> listarPedidos();
+    List<Pedido> listarPedidos();
     Pedido obterPedidoPorCPF(String cpf);
-
     Pedido checkoutPedido(Long id);
 }
