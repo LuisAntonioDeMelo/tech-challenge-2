@@ -1,0 +1,7 @@
+package com.tech.challenge.fastfood.application.exception.application.services.exceptions;
+
+public class PedidoNaoEncontratoException extends RuntimeException {
+    public PedidoNaoEncontratoException(String message) {
+        super(message);
+    }
+}
