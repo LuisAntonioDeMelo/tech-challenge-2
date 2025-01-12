@@ -23,12 +23,12 @@ public class ClienteInteractor implements ClienteUseCase {
     @Override
     @Transactional
     public Cliente criarCliente(Cliente cliente) {
-        if (isInValidCPF(cliente.cpf())) {
+        if (isInValidCPF(cliente.getCpf())) {
             throw new InvalidCpfException("CPF Inserido não é válido");
         }
-        Optional<Cliente> clienteExiste = clienteGateway.obterClientePorCPF(cliente.cpf());
+        Optional<Cliente> clienteExiste = clienteGateway.obterClientePorCPF(cliente.getCpf());
         if(clienteExiste.isPresent()) {
-            throw new ClienteExistenteException("já existe um cliente com mesmo CPF:" + cliente.cpf());
+            throw new ClienteExistenteException("já existe um cliente com mesmo CPF:" + cliente.getCpf());
         }
         return clienteGateway.criarCliente(cliente);
     }
@@ -47,14 +47,14 @@ public class ClienteInteractor implements ClienteUseCase {
 
     @Override
     public Cliente editarCliente(Cliente cliente) {
-        if (isInValidCPF(cliente.cpf())) {
+        if (isInValidCPF(cliente.getCpf())) {
             throw new InvalidCpfException("CPF Inserido não é válido");
         }
 
         Cliente clienteEditado = clienteGateway.editarCliente(cliente);
 
         if (Objects.isNull(clienteEditado)) {
-            throw new ClienteNotFoundException("Cliente não encontrado: " + cliente.cpf());
+            throw new ClienteNotFoundException("Cliente não encontrado: " + cliente.getCpf());
         }
         return clienteEditado;
     }
@@ -65,7 +65,7 @@ public class ClienteInteractor implements ClienteUseCase {
         if (cliente.isEmpty()) {
             throw new ClienteNotFoundException("Cliente não encontrado");
         }
-        clienteGateway.deletarCliente(cliente.get().id());
+        clienteGateway.deletarCliente(cliente.get().getId());
     }
 
     private boolean isInValidCPF(String cpf) {

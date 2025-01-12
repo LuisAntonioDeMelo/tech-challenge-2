@@ -1,8 +1,9 @@
 package com.tech.challenge.fastfood.infrastructure.persistence.converters;
 
+
+import com.tech.challenge.fastfood.domain.Cliente;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.ClienteRequest;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.ClienteResponseDTO;
-import com.tech.challenge.fastfood.domain.Cliente;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,11 +21,11 @@ public class ClienteConverter {
     public ClienteResponseDTO toDto(Cliente cliente) {
         return ClienteResponseDTO
                 .builder()
-                .codigoCliente(cliente.id())
-                .cpf(cliente.cpf())
-                .nomeCliente(cliente.nome())
-                .emailCliente(cliente.email())
-                .numeroTelefone(cliente.telefone())
+                .codigoCliente(cliente.getId())
+                .cpf(cliente.getCpf())
+                .nomeCliente(cliente.getNome())
+                .emailCliente(cliente.getEmail())
+                .numeroTelefone(cliente.getTelefone())
                 .build();
     }
 }

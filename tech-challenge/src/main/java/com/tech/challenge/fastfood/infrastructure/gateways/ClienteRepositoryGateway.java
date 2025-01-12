@@ -30,12 +30,12 @@ public class ClienteRepositoryGateway implements ClienteGateway {
 
     @Override
     public Cliente editarCliente(Cliente cliente) {
-        Optional<ClienteEntity> clienteEntityDb = clienteRepository.findById(cliente.id());
+        Optional<ClienteEntity> clienteEntityDb = clienteRepository.findById(cliente.getId());
         if(clienteEntityDb.isPresent()) {
             ClienteEntity clienteEntity =  clienteEntityDb.get();
-            clienteEntity.setNome(cliente.nome());
-            clienteEntity.setCpf(cliente.cpf());
-            clienteEntity.setTelefone(cliente.telefone());
+            clienteEntity.setNome(cliente.getNome());
+            clienteEntity.setCpf(cliente.getCpf());
+            clienteEntity.setTelefone(cliente.getTelefone());
             return modelMapper.map(clienteRepository.save(clienteEntity), Cliente.class);
         }
         return modelMapper.map(clienteEntityDb, Cliente.class);

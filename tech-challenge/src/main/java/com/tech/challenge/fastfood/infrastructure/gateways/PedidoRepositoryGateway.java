@@ -51,7 +51,9 @@ public class PedidoRepositoryGateway implements PedidoGateway {
         Optional<PedidoEntity> pedidoOpt = pedidoRepository.findById(idPedido);
         if (pedidoOpt.isPresent()) {
             PedidoEntity entity = pedidoOpt.get();
-            SituacaoPedidoEnum situacaoPedidoEnum = Arrays.stream(SituacaoPedidoEnum.values()).filter(cp -> cp.name().equalsIgnoreCase(situacaoPedido)).findAny().get();
+            SituacaoPedidoEnum situacaoPedidoEnum = Arrays.stream(SituacaoPedidoEnum.values())
+                    .filter(cp -> cp.name().equalsIgnoreCase(situacaoPedido))
+                    .findAny().get();
             entity.setSituacaoPedidoEnum(situacaoPedidoEnum);
             entity = pedidoRepository.save(entity);
             return modelMapper.map(entity, Pedido.class);

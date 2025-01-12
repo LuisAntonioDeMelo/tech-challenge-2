@@ -11,4 +11,12 @@ public interface PedidoRepository extends JpaRepository<PedidoEntity, Long> {
             WHERE c.cpf = :cpf
             """)
     PedidoEntity oterPedidoPorCPF(@Param("cpf") String cpf);
+
+
+//    @Query("""
+//            SELECT p From PedidoEntity p
+//            JOIN FETCH p.clienteEntity c
+//            WHERE p.id = :id
+//            """)
+//    PedidoEntity checkoutPedido(@Param("id") Long id);
 }
