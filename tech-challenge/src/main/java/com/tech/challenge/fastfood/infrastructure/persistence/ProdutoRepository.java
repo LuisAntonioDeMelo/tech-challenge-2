@@ -1,7 +1,5 @@
 package com.tech.challenge.fastfood.infrastructure.persistence;
 
-import com.tech.challenge.fastfood.adapter.driven.persistence.CategoriaProdutoEnum;
-import com.tech.challenge.fastfood.adapter.driven.persistence.ProdutoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

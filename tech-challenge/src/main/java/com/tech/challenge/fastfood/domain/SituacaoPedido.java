@@ -1,7 +1,7 @@
 package com.tech.challenge.fastfood.domain;
 
-import com.tech.challenge.fastfood.application.exception.application.services.patterns.NotificacaoStrategy;
-import com.tech.challenge.fastfood.application.exception.application.services.patterns.notificacaoStrategy.*;
+import com.tech.challenge.fastfood.application.usecases.patterns.NotificacaoStrategy;
+import com.tech.challenge.fastfood.application.usecases.patterns.notificacaoStrategy.*;
 
 import java.util.Arrays;
 

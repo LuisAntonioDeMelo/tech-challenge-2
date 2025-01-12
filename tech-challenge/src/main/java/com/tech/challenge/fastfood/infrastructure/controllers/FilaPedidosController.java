@@ -1,7 +1,7 @@
 package com.tech.challenge.fastfood.infrastructure.controllers;
 
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.PedidoFilaDTO;
-import com.tech.challenge.fastfood.application.exception.application.ports.FilaPedidosServicePort;
+import com.tech.challenge.fastfood.application.usecases.FilaPedidosUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,16 +15,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FilaPedidosController {
 
-    private final FilaPedidosServicePort filaPedidosServicePort;
+    private final FilaPedidosUseCase filaPedidosUseCase;
 
     @GetMapping("/fila")
     public ResponseEntity<List<PedidoFilaDTO>> obterFilaDePedidos() {
-        return ResponseEntity.ok(  filaPedidosServicePort.listarPedidosNaFila());
+        return ResponseEntity.ok(  filaPedidosUseCase.listarPedidosNaFila());
     }
 
     @GetMapping("/pedidos-retirada")
     public ResponseEntity<List<PedidoFilaDTO>> obterFilaDePedidosRetirada() {
-        return ResponseEntity.ok(  filaPedidosServicePort.listarPedidosNaFilaRetirada());
+        return ResponseEntity.ok(  filaPedidosUseCase.listarPedidosNaFilaRetirada());
     }
 
 }

@@ -1,9 +1,9 @@
 package com.tech.challenge.fastfood.infrastructure.controllers;
 
+import com.tech.challenge.fastfood.application.usecases.interactors.ClienteInteractor;
 import com.tech.challenge.fastfood.infrastructure.persistence.converters.ClienteConverter;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.ClienteRequest;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.ClienteResponseDTO;
-import com.tech.challenge.fastfood.application.exception.application.ports.ClienteServicePort;
 import com.tech.challenge.fastfood.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ClienteController {
 
-    private final ClienteServicePort clienteServicePort;
+    private final ClienteInteractor clienteServicePort;
     private final ClienteConverter clienteConverter;
 
 
@@ -36,7 +36,7 @@ public class ClienteController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<ClienteResponseDTO> editarCliente(@PathVariable Long id,  @RequestBody ClienteRequest clienteRequest) {
-        Cliente cliente =  clienteServicePort.editarCliente(clienteConverter.toDomain(clienteRequest, id));
+        Cliente cliente =  clienteServicePort.editarCliente(clienteConverter.toDomain(id,clienteRequest));
         return ResponseEntity.ok(clienteConverter.toDto(cliente));
     }
 

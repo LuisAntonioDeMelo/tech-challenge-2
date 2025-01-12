@@ -1,10 +1,11 @@
 package com.tech.challenge.fastfood.main;
 
-import com.tech.challenge.fastfood.application.exception.application.ports.*;
-import com.tech.challenge.fastfood.application.exception.application.services.ClienteService;
-import com.tech.challenge.fastfood.application.exception.application.services.FilaPedidosService;
-import com.tech.challenge.fastfood.application.exception.application.services.PedidoService;
-import com.tech.challenge.fastfood.application.exception.application.services.ProdutoService;
+import com.tech.challenge.fastfood.application.gateway.*;
+import com.tech.challenge.fastfood.application.usecases.*;
+import com.tech.challenge.fastfood.application.usecases.interactors.ClienteInteractor;
+import com.tech.challenge.fastfood.application.usecases.interactors.FilaPedidoInteractor;
+import com.tech.challenge.fastfood.application.usecases.interactors.PedidoInteractor;
+import com.tech.challenge.fastfood.application.usecases.interactors.ProdutoInteractor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,24 +13,25 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BeansConfig {
 
+
     @Bean
-    public ClienteServicePort clienteServicePort(ClienteRepositoryPort clienteRepositoryPort) {
-        return new ClienteService(clienteRepositoryPort);
+    public ClienteUseCase clienteUseCase(ClienteGateway clienteGateway) {
+        return new ClienteInteractor(clienteGateway);
     }
 
     @Bean
-    public ProdutoServicePort produtoServicePort(ProdutoRepositoryPort produtoRepositoryPort) {
-        return new ProdutoService(produtoRepositoryPort);
+    public ProdutoUseCase produtoUseCase(ProdutoGateway produtoGateway) {
+        return new ProdutoInteractor(produtoGateway);
     }
 
     @Bean
-    public PedidoServicePort pedidoServicePort(PedidoRepositoryPort pedidoRepositoryPort) {
-        return new PedidoService(pedidoRepositoryPort);
+    public PedidoUseCase pedidoUseCase(PedidoGateway pedidoGateway) {
+        return new PedidoInteractor(pedidoGateway);
     }
 
     @Bean
-    public FilaPedidosServicePort filaPedidosServicePort(PedidoRepositoryPort pedidoRepositoryPort, ClienteRepositoryPort clienteRepositoryPort) {
-        return new FilaPedidosService(pedidoRepositoryPort, clienteRepositoryPort);
+    public FilaPedidosUseCase filaPedidosUseCase(PedidoGateway pedidoGateway) {
+        return new FilaPedidoInteractor(pedidoGateway);
     }
 
     @Bean

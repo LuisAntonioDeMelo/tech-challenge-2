@@ -1,6 +1,6 @@
 package com.tech.challenge.fastfood.main;
 
-import com.tech.challenge.fastfood.application.exception.application.services.exceptions.*;
+import com.tech.challenge.fastfood.application.usecases.exceptions.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;

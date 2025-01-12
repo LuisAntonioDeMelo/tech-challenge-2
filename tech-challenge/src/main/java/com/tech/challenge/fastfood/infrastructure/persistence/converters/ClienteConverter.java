@@ -10,29 +10,21 @@ public class ClienteConverter {
 
 
     public Cliente toDomain(ClienteRequest clienteRequest) {
-        Cliente cliente = new Cliente();
-        cliente.setCpf(clienteRequest.cpf());
-        cliente.setNome(clienteRequest.nome());
-        cliente.setEmail(clienteRequest.email());
-        cliente.setTelefone(clienteRequest.telefone());
-        return cliente;
+       return new Cliente( null ,clienteRequest.cpf(),clienteRequest.nome(), clienteRequest.email(), clienteRequest.telefone());
     }
 
-    public Cliente toDomain(ClienteRequest clienteRequest, Long id) {
-        Cliente cliente = toDomain(clienteRequest);
-        cliente.setId(id);
-        return cliente;
+    public Cliente toDomain(Long id, ClienteRequest clienteRequest) {
+        return new Cliente(id, clienteRequest.cpf(),clienteRequest.nome(), clienteRequest.email(), clienteRequest.telefone());
     }
-
 
     public ClienteResponseDTO toDto(Cliente cliente) {
         return ClienteResponseDTO
                 .builder()
-                .codigoCliente(cliente.getId())
-                .cpf(cliente.getCpf())
-                .nomeCliente(cliente.getNome())
-                .emailCliente(cliente.getEmail())
-                .numeroTelefone(cliente.getTelefone())
+                .codigoCliente(cliente.id())
+                .cpf(cliente.cpf())
+                .nomeCliente(cliente.nome())
+                .emailCliente(cliente.email())
+                .numeroTelefone(cliente.telefone())
                 .build();
     }
 }
