@@ -22,4 +22,5 @@ public class Pedido {
     private LocalDateTime horarioFinalizacao;
     private BigDecimal valorTotalPedido;
     private SituacaoPedido situacaoPedido;
+    private Pagamento pagamento;
 }

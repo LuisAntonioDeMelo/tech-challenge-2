@@ -31,7 +31,7 @@ public class PedidoController {
         return ResponseEntity.ok(pedidoConverter.toDto(pedido));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("alterar-situacao/{id}")
     public ResponseEntity<?> alterarSituacaoPedido(@PathVariable Long id, @RequestParam String situacao) {
         Pedido pedido = pedidoUseCase.alterarSituacaoPedido(id, situacao);
         return ResponseEntity.ok(pedidoConverter.toDto(pedido));

@@ -2,13 +2,15 @@ package com.tech.challenge.fastfood.main;
 
 import com.tech.challenge.fastfood.application.gateway.*;
 import com.tech.challenge.fastfood.application.usecases.*;
-import com.tech.challenge.fastfood.application.usecases.interactors.ClienteInteractor;
-import com.tech.challenge.fastfood.application.usecases.interactors.FilaPedidoInteractor;
-import com.tech.challenge.fastfood.application.usecases.interactors.PedidoInteractor;
-import com.tech.challenge.fastfood.application.usecases.interactors.ProdutoInteractor;
+import com.tech.challenge.fastfood.application.usecases.interactors.*;
+import com.tech.challenge.fastfood.application.usecases.patterns.PagamentoStrategy;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.util.Map;
 
 @Configuration
 public class BeansConfig {
@@ -35,7 +37,13 @@ public class BeansConfig {
     }
 
     @Bean
+    public ProcessarPagamentoUseCase processarPagamentoUseCase(Map<String, PagamentoStrategy> strategies) {
+        return new ProcessarPagamentoInteractor(strategies);
+    }
+
+    @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
 }

@@ -1,5 +1,6 @@
 package com.tech.challenge.fastfood.domain;
 
+import com.tech.challenge.fastfood.application.gateway.PedidoGateway;
 import com.tech.challenge.fastfood.application.usecases.patterns.NotificacaoStrategy;
 import com.tech.challenge.fastfood.application.usecases.patterns.notificacaoStrategy.*;
 

@@ -81,4 +81,11 @@ public class PedidoRepositoryGateway implements PedidoGateway {
         return modelMapper.map(entity, Pedido.class);
     }
 
+    @Override
+    public Pedido alterarPedido(Pedido pedido) {
+        PedidoEntity entity = modelMapper.map(pedido, PedidoEntity.class);
+        entity = pedidoRepository.save(entity);
+        return modelMapper.map(entity, Pedido.class);
+    }
+
 }

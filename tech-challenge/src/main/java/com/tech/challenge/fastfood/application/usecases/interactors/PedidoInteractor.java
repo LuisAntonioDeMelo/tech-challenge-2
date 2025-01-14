@@ -4,7 +4,9 @@ import com.tech.challenge.fastfood.application.gateway.PedidoGateway;
 import com.tech.challenge.fastfood.application.usecases.PedidoUseCase;
 import com.tech.challenge.fastfood.application.usecases.exceptions.PedidoNaoEncontratoException;
 import com.tech.challenge.fastfood.domain.Pedido;
+import com.tech.challenge.fastfood.domain.SituacaoPedido;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +24,12 @@ public class PedidoInteractor implements PedidoUseCase {
     }
 
     public Pedido alterarSituacaoPedido(Long id, String situacao) {
+        if(situacao.equals(SituacaoPedido.FINALIZADO.name())){
+          Pedido pedido = pedidoGateway.alterarSituacaoPedido(id, situacao);
+          pedido.setHorarioFinalizacao(LocalDateTime.now());
+          pedidoGateway.alterarPedido(pedido);
+          return pedido;
+        }
         return pedidoGateway.alterarSituacaoPedido(id, situacao);
     }
 

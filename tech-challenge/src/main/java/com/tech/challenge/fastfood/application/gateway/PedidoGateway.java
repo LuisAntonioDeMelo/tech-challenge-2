@@ -11,4 +11,5 @@ public interface PedidoGateway {
     Pedido alterarSituacaoPedido(Long idPedido, String situacaoPedido);
     Pedido obterPedidoPorCPF(String cpf);
     Pedido checkoutPedido(Long idPedido);
+    Pedido alterarPedido(Pedido pedido);
 }
