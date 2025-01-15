@@ -27,6 +27,9 @@ public class PedidoEntity {
     @JoinColumn(name = "cliente_entity_id")
     private ClienteEntity clienteEntity;
 
+    @OneToOne(mappedBy = "pedidoEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private PagamentoEntity pagamentoEntity;
+
     @ManyToMany
     @JoinTable(
             name = "pedido_entity_produto_entity",

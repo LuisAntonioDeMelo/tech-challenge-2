@@ -44,10 +44,15 @@ public class PedidoController {
     }
 
     @GetMapping("/checkout/{id}")
-    public ResponseEntity<?> checkouttPedido(@PathVariable Long id) {
+    public ResponseEntity<?> checkoutPedido(@PathVariable Long id) {
         Pedido pedido = pedidoUseCase.checkoutPedido(id);
         return ResponseEntity.ok(pedidoConverter.toDto(pedido));
     }
 
+    @GetMapping("/selecitonar-pedido/{id}")
+    public ResponseEntity<?> criarPagamentoPedido(@PathVariable Long id, @RequestParam String tipoPagamento) {
+        Pedido pedido = pedidoUseCase.criarPagamentoPedido(id, tipoPagamento);
+        return ResponseEntity.ok(pedidoConverter.toDto(pedido));
+    }
 
 }

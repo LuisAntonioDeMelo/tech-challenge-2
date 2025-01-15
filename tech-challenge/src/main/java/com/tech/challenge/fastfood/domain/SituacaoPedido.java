@@ -7,6 +7,7 @@ import com.tech.challenge.fastfood.application.usecases.patterns.notificacaoStra
 import java.util.Arrays;
 
 public enum SituacaoPedido {
+    CRIADO(new CriarPedidoStrategy()),
     INCIAR_PREPARACAO(new InciarPreparacaoStrategy()),
     EM_PREPARACAO(new PedidoEmPreparacaoStrategy()),
     MONTAGEM(new PedidoEmMontagemStrategy()),

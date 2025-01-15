@@ -9,7 +9,6 @@ import com.mercadopago.resources.payment.Payment;
 import com.tech.challenge.fastfood.application.usecases.patterns.PagamentoStrategy;
 import com.tech.challenge.fastfood.application.usecases.patterns.pagamentoStrategy.qrCode.MercadoPagoPixDTO;
 import com.tech.challenge.fastfood.domain.Pedido;
-import com.tech.challenge.fastfood.main.MercadoPagoInitializer;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 @Qualifier("pix")
@@ -19,7 +18,7 @@ public class PagamentoPixMercadoPagoStrategy implements PagamentoStrategy {
     public String processarPagamento(Pedido pedido) {
         MercadoPagoPixDTO mercadoPagoPixDTO = new MercadoPagoPixDTO().toDto(pedido);
         String token = "APP_USR-1877326991340430-011322-919848db466f6190c81d772e5e864f16-140502149";
-        MercadoPagoInitializer.initialize();
+
         return gerarQrCodePagamento(token, mercadoPagoPixDTO);
     }
 

@@ -37,8 +37,8 @@ public class BeansConfig {
     }
 
     @Bean
-    public ProcessarPagamentoUseCase processarPagamentoUseCase(Map<String, PagamentoStrategy> strategies) {
-        return new ProcessarPagamentoInteractor(strategies);
+    public ProcessarPagamentoUseCase processarPagamentoUseCase(Map<String, PagamentoStrategy> strategies, PedidoGateway pedidoGateway) {
+        return new ProcessarPagamentoInteractor(strategies, pedidoGateway);
     }
 
     @Bean

@@ -5,6 +5,7 @@ import com.tech.challenge.fastfood.application.usecases.interactors.ProcessarPag
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,7 +16,7 @@ public class PagamentoController {
     private final ProcessarPagamentoUseCase processarPagamentoUseCase;
 
     @PostMapping("qr-code")
-    public String pagamentoQrCode() {
-        return processarPagamentoUseCase.processarPagamento(1L);
+    public String pagamentoQrCode(@RequestParam("idPedido") Long idPedido) {
+        return processarPagamentoUseCase.processarPagamento(idPedido);
     }
 }

@@ -4,12 +4,11 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Data
 public class Pagamento {
 
-    private UUID id;
+    private Long id;
     private BigDecimal valor;
     private String descricao;
     private String emv;

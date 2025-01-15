@@ -3,11 +3,12 @@ import lombok.Getter;
 
 @Getter
 public enum SituacaoPedidoEnum {
-    INCIAR_PREPARACAO(1, "Iniciar Preparação"),
-    EM_PREPARACAO(2, "Em Preparação"),
-    MONTAGEM(3, "Montagem"),
-    EM_FILA_RETIRADA(4,"Em fila Retirada"),
-    FINALIZADO(5, "Finalizado");
+    CRIADO(1, "Criado"),
+    INCIAR_PREPARACAO(2, "Iniciar Preparação"),
+    EM_PREPARACAO(3, "Em Preparação"),
+    MONTAGEM(4, "Montagem"),
+    EM_FILA_RETIRADA(5,"Em fila Retirada"),
+    FINALIZADO(6, "Finalizado");
 
     private final Integer codigo;
     private final String descricao;
