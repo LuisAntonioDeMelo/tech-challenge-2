@@ -10,6 +10,5 @@ public interface PedidoUseCase {
     List<Pedido> listarPedidos();
     Pedido obterPedidoPorCPF(String cpf);
     Pedido checkoutPedido(Long id);
-    Pedido criarPagamentoPedido(Long id, String tipoPagamento);
 
 }

@@ -49,10 +49,4 @@ public class PedidoController {
         return ResponseEntity.ok(pedidoConverter.toDto(pedido));
     }
 
-    @GetMapping("/selecitonar-pedido/{id}")
-    public ResponseEntity<?> criarPagamentoPedido(@PathVariable Long id, @RequestParam String tipoPagamento) {
-        Pedido pedido = pedidoUseCase.criarPagamentoPedido(id, tipoPagamento);
-        return ResponseEntity.ok(pedidoConverter.toDto(pedido));
-    }
-
 }

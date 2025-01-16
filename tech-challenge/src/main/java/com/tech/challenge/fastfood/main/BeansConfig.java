@@ -3,13 +3,13 @@ package com.tech.challenge.fastfood.main;
 import com.tech.challenge.fastfood.application.gateway.*;
 import com.tech.challenge.fastfood.application.usecases.*;
 import com.tech.challenge.fastfood.application.usecases.interactors.*;
+import com.tech.challenge.fastfood.application.usecases.pagamento.ConsultarPagamentoUseCase;
+import com.tech.challenge.fastfood.application.usecases.pagamento.ProcessarPagamentoUseCase;
 import com.tech.challenge.fastfood.application.usecases.patterns.PagamentoStrategy;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.net.URI;
-import java.net.http.HttpClient;
 import java.util.Map;
 
 @Configuration
@@ -39,6 +39,11 @@ public class BeansConfig {
     @Bean
     public ProcessarPagamentoUseCase processarPagamentoUseCase(Map<String, PagamentoStrategy> strategies, PedidoGateway pedidoGateway) {
         return new ProcessarPagamentoInteractor(strategies, pedidoGateway);
+    }
+
+    @Bean
+    public ConsultarPagamentoUseCase consultarPagamentoUseCase(PedidoGateway pedidoGateway) {
+        return new ConsultarPagamentoInteractor(pedidoGateway);
     }
 
     @Bean

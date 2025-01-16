@@ -1,7 +1,7 @@
 package com.tech.challenge.fastfood.application.usecases.interactors;
 
 import com.tech.challenge.fastfood.application.gateway.PedidoGateway;
-import com.tech.challenge.fastfood.application.usecases.ProcessarPagamentoUseCase;
+import com.tech.challenge.fastfood.application.usecases.pagamento.ProcessarPagamentoUseCase;
 import com.tech.challenge.fastfood.application.usecases.patterns.PagamentoStrategy;
 import com.tech.challenge.fastfood.domain.Pedido;
 

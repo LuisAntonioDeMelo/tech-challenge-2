@@ -15,4 +15,5 @@ public class Pagamento {
     private String base64;
     private LocalDateTime expiracao;
     private TipoPagamento tipoPagamento;
+    private StatusPagamento statusPagamento;
 }

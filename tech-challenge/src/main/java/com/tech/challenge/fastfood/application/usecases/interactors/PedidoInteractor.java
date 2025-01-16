@@ -51,9 +51,4 @@ public class PedidoInteractor implements PedidoUseCase {
     public Pedido checkoutPedido(Long id) {
         return pedidoGateway.checkoutPedido(id);
     }
-
-    @Override
-    public Pedido criarPagamentoPedido(Long id, String tipoPagamento) {
-        return pedidoGateway.criarPagamentoPedido(id, tipoPagamento);
-    }
 }

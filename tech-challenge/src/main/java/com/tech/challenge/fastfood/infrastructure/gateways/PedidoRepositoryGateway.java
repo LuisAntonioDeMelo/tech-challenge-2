@@ -5,6 +5,7 @@ import com.tech.challenge.fastfood.application.gateway.PedidoGateway;
 import com.tech.challenge.fastfood.application.usecases.exceptions.PedidoNaoEncontratoException;
 import com.tech.challenge.fastfood.domain.Pedido;
 import com.tech.challenge.fastfood.domain.Produto;
+import com.tech.challenge.fastfood.domain.StatusPagamento;
 import com.tech.challenge.fastfood.domain.TipoPagamento;
 import com.tech.challenge.fastfood.infrastructure.persistence.*;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +43,6 @@ public class PedidoRepositoryGateway implements PedidoGateway {
         entity.setHorarioInicio(LocalDateTime.now());
         entity.setSituacaoPedidoEnum(SituacaoPedidoEnum.CRIADO);
         entity.setValorTotalPedido(produtoEntities.stream().filter(Objects::nonNull).map(ProdutoEntity::getValor).reduce(BigDecimal.ZERO, BigDecimal::add));
-
 
         entity.setPagamentoEntity(null);
 
@@ -111,6 +111,7 @@ public class PedidoRepositoryGateway implements PedidoGateway {
         pagamentoEntity.setDescricao("");
         pagamentoEntity.setTipoPagamento(TipoPagamento.valueOf(tipoPagamento));
         entity.setPagamentoEntity(pagamentoEntity);
+        pagamentoEntity.setStatusPagamento(StatusPagamento.PENDENTE);
         entity = pedidoRepository.save(entity);
         return modelMapper.map(entity, Pedido.class);
     }
