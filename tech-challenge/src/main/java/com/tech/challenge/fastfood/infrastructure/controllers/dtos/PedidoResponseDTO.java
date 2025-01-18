@@ -1,6 +1,7 @@
 package com.tech.challenge.fastfood.infrastructure.controllers.dtos;
 
 import com.tech.challenge.fastfood.domain.Cliente;
+import com.tech.challenge.fastfood.domain.Pagamento;
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,4 +21,5 @@ public class PedidoResponseDTO {
     private LocalDateTime horarioFinalizacao;
     private String situacaoPedido;
     private BigDecimal valorTotal;
+    private Pagamento pagamento;
 }

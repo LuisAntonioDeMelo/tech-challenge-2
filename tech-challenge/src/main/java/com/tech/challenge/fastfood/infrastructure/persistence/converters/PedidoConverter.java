@@ -45,6 +45,7 @@ public class PedidoConverter {
                                         .descricao(p.getDescricao())
                                         .build())
                         .toList())
+                .pagamento(pedido.getPagamento())
                 .valorTotal(pedido.getValorTotalPedido())
                 .build();
     }

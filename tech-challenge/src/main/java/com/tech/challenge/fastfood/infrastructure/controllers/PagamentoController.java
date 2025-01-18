@@ -5,6 +5,7 @@ import com.tech.challenge.fastfood.application.usecases.pagamento.CriarPagamento
 import com.tech.challenge.fastfood.application.usecases.pagamento.ProcessarPagamentoUseCase;
 import com.tech.challenge.fastfood.domain.Pedido;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.StatusPagamentoDTO;
+import com.tech.challenge.fastfood.infrastructure.persistence.converters.PedidoConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ public class PagamentoController {
     private final ProcessarPagamentoUseCase processarPagamentoUseCase;
     private final ConsultarPagamentoUseCase consultarPagamentoUseCase;
     private final CriarPagamentoUseCase criarPagamentoPedidoUseCase;
+    private final PedidoConverter pedidoConverter;
 
     @GetMapping("/{idPedido}/status")
     public ResponseEntity<StatusPagamentoDTO> consultarStatusPagamento(@PathVariable Long idPedido) {
@@ -27,7 +29,7 @@ public class PagamentoController {
         return ResponseEntity.ok(processarPagamentoUseCase.processarPagamento(idPedido));
     }
 
-    @GetMapping("/criar-pagamento-pedido/{id}")
+    @PostMapping("/criar-pagamento-pedido/{id}")
     public ResponseEntity<?> criarPagamentoPedido(@PathVariable Long id, @RequestParam String tipoPagamento) {
         Pedido pedido = criarPagamentoPedidoUseCase.criarPagamentoPedido(id, tipoPagamento);
         return ResponseEntity.ok(pedidoConverter.toDto(pedido));

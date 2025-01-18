@@ -4,6 +4,7 @@ import com.tech.challenge.fastfood.application.gateway.*;
 import com.tech.challenge.fastfood.application.usecases.*;
 import com.tech.challenge.fastfood.application.usecases.interactors.*;
 import com.tech.challenge.fastfood.application.usecases.pagamento.ConsultarPagamentoUseCase;
+import com.tech.challenge.fastfood.application.usecases.pagamento.CriarPagamentoUseCase;
 import com.tech.challenge.fastfood.application.usecases.pagamento.ProcessarPagamentoUseCase;
 import com.tech.challenge.fastfood.application.usecases.patterns.PagamentoStrategy;
 import org.modelmapper.ModelMapper;
@@ -44,6 +45,11 @@ public class BeansConfig {
     @Bean
     public ConsultarPagamentoUseCase consultarPagamentoUseCase(PedidoGateway pedidoGateway) {
         return new ConsultarPagamentoInteractor(pedidoGateway);
+    }
+
+    @Bean
+    public CriarPagamentoUseCase criarPagamentoUseCase(PedidoGateway pedidoGateway) {
+        return new CriarPagamentoInteractor(pedidoGateway);
     }
 
     @Bean

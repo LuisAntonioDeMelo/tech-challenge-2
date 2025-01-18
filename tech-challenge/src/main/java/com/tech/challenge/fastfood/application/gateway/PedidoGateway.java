@@ -13,4 +13,5 @@ public interface PedidoGateway {
     Pedido checkoutPedido(Long idPedido);
     Pedido alterarPedido(Pedido pedido);
     Pedido obterPedidoPorId(Long idPedido);
+    Pedido criarPagamentoPedido(Long id, String tipoPagamento);
 }
