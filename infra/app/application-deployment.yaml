@@ -5,7 +5,7 @@ metadata:
   labels:
     app: java-app
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: java-app
@@ -16,15 +16,15 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: devluis27/app-tech-challenge-fast-food:1.1
+        image: devluis27/app-tech-challenge-fast-food:1.2
         ports:
         - containerPort: 8080
         resources:
           requests:
-            memory: "512Mi"
+            memory: "256Mi"
             cpu: "500m"
           limits:
-            memory: "1Gi"
+            memory: "512Mi"
             cpu: "1"
         env:
         - name: DB_HOST
@@ -37,10 +37,10 @@ spec:
           value: "admin"
         - name: DB_PASSWORD
           value: "admin"
-        volumeMounts:
-        - mountPath: /data
-          name: storage-volume
-      volumes:
-      - name: storage-volume
-        persistentVolumeClaim:
-          claimName: java-app-storage
+      #   volumeMounts:
+      #   - mountPath: /data
+      #     name: storage-volume
+      # volumes:
+      # - name: storage-volume
+      #   persistentVolumeClaim:
+      #     claimName: java-app-storage

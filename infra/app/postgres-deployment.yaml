@@ -21,10 +21,10 @@ spec:
         - containerPort: 5432
         resources:
           limits:
-            memory: "512Mi"
+            memory: "256Mi"
             cpu: "500m"
           requests:
-            memory: "256Mi"
+            memory: "128Mi"
             cpu: "250m"
         env:
         - name: POSTGRES_USER
@@ -33,6 +33,13 @@ spec:
           value: "admin"
         - name: POSTGRES_DB
           value: "mydb"
+        volumeMounts:
+        - mountPath: /data
+          name: storage-volume
+      volumes:
+      - name: storage-volume
+        persistentVolumeClaim:
+          claimName: postgres-app-storage
 ---
 apiVersion: v1
 kind: Service
