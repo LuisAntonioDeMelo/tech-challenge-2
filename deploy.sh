@@ -43,11 +43,38 @@ done
 echo "Processo de implantação concluído com sucesso."
 echo "ficara ativa em alguns segundos"
 
-kubectl get pods -w 
+kubectl get pods -o jsonpath='{.items[*].status.containerStatuses[*].ready}'
 
 #//fica roando o ccurl para verificar se o serviço esta ativo
 while [ $(kubectl get pods -o jsonpath='{.items[*].status.containerStatuses[*].ready}' | grep false | wc -l) -gt 0 ]; do
   echo "Aguardando a inicialização dos pods..."
-  sleep 5
+  sleep 10
 done
+
+echo "status HPA"
+kubectl get hpa 
+
+echo "status dos pods"
+kubectl get pods
+
+echo ":::::"
+echo "executando efk...."
+echo "\n\n"
+
+# Subir monitoramento 
+kubectl apply -f infra/monitoring-efk/elastic/elastic-pod.yaml
+sleep 1 
+kubectl apply -f infra/monitoring-efk/elastic/elastic-service.yaml
+sleep 1
+kubectl apply -f infra/monitoring-efk/fluentd/fluentd-configmap.yaml
+sleep 1
+kubectl apply -f infra/monitoring-efk/fluentd/fluentd.yaml
+sleep 1
+kubectl apply -f infra/monitoring-efk/kibana/kibana-pod.yaml
+sleep 1
+kubectl apply -f infra/monitoring-efk/kibana/kibana-service.yaml
+
+
 curl  http://localhost:30000/
+echo "Aplicação implantada com sucesso."
+echo "Acesse http://localhost:30000 para visualizar a aplicação."
