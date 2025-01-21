@@ -3,6 +3,8 @@ spring:
     name: "tech-challenge-2-fast-food-api"
 
   datasource:
+    hikari:
+      max-lifetime: 1500000
     url: jdbc:postgresql://localhost:5446/postgres
     username: postgres
     password: postgres

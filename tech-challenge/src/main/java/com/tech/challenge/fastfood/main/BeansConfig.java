@@ -5,9 +5,11 @@ import com.tech.challenge.fastfood.application.usecases.cliente.ClienteUseCase;
 import com.tech.challenge.fastfood.application.usecases.cliente.interactors.ClienteInteractor;
 import com.tech.challenge.fastfood.application.usecases.pagamento.ConsultarPagamentoUseCase;
 import com.tech.challenge.fastfood.application.usecases.pagamento.CriarPagamentoUseCase;
+import com.tech.challenge.fastfood.application.usecases.pagamento.NotificacaoPagamentoUseCase;
 import com.tech.challenge.fastfood.application.usecases.pagamento.ProcessarPagamentoUseCase;
 import com.tech.challenge.fastfood.application.usecases.pagamento.interactors.ConsultarPagamentoInteractor;
 import com.tech.challenge.fastfood.application.usecases.pagamento.interactors.CriarPagamentoInteractor;
+import com.tech.challenge.fastfood.application.usecases.pagamento.interactors.NotificacaoPagamentoInteractor;
 import com.tech.challenge.fastfood.application.usecases.pagamento.interactors.ProcessarPagamentoInteractor;
 import com.tech.challenge.fastfood.application.usecases.pagamento.pagamentoStrategy.PagamentoStrategy;
 import com.tech.challenge.fastfood.application.usecases.pedidos.FilaPedidosUseCase;
@@ -66,6 +68,11 @@ public class BeansConfig {
     @Bean
     public ListarPedidosPorSituacaoUseCase listarPedidosPorSituacaoUseCase(PedidoGateway pedidoGateway) {
         return new ListarPedidosPorSituacaoInteractor(pedidoGateway);
+    }
+
+    @Bean
+    public NotificacaoPagamentoUseCase notificacaoPagamentoUseCase() {
+        return new NotificacaoPagamentoInteractor();
     }
 
     @Bean

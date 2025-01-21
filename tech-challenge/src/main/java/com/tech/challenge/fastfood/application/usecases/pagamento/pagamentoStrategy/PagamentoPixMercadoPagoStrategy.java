@@ -9,8 +9,9 @@ import com.mercadopago.resources.payment.Payment;
 import com.tech.challenge.fastfood.application.usecases.pagamento.pagamentoStrategy.qrCode.MercadoPagoPixDTO;
 import com.tech.challenge.fastfood.domain.Pedido;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-@Qualifier("pix")
+@Component("PIX")
 public class PagamentoPixMercadoPagoStrategy implements PagamentoStrategy {
 
     @Override

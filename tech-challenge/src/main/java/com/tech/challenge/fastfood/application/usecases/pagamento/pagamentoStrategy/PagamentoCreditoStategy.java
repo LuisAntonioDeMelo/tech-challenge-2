@@ -2,9 +2,10 @@ package com.tech.challenge.fastfood.application.usecases.pagamento.pagamentoStra
 
 import com.tech.challenge.fastfood.domain.Pedido;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 
-@Qualifier("credito")
+@Component("credito")
 public class PagamentoCreditoStategy implements PagamentoStrategy {
 
     @Override
