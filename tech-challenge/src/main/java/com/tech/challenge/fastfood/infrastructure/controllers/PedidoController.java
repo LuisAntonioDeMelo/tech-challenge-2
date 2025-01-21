@@ -1,9 +1,11 @@
 package com.tech.challenge.fastfood.infrastructure.controllers;
 
+import com.tech.challenge.fastfood.application.usecases.pedidos.ListarPedidosPorSituacaoUseCase;
+import com.tech.challenge.fastfood.infrastructure.controllers.dtos.PedidoStatusResponseDTO;
 import com.tech.challenge.fastfood.infrastructure.persistence.converters.PedidoConverter;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.PedidoRequest;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.PedidoResponseDTO;
-import com.tech.challenge.fastfood.application.usecases.PedidoUseCase;
+import com.tech.challenge.fastfood.application.usecases.pedidos.PedidoUseCase;
 import com.tech.challenge.fastfood.domain.Pedido;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ public class PedidoController {
 
     private final PedidoUseCase pedidoUseCase;
     private final PedidoConverter pedidoConverter;
+    private final ListarPedidosPorSituacaoUseCase listarPedidosPorSituacaoUseCase;
 
     @GetMapping()
     public ResponseEntity<List<PedidoResponseDTO>> obterPedidos() {
@@ -47,6 +50,12 @@ public class PedidoController {
     public ResponseEntity<?> checkoutPedido(@PathVariable Long id) {
         Pedido pedido = pedidoUseCase.checkoutPedido(id);
         return ResponseEntity.ok(pedidoConverter.toDto(pedido));
+    }
+
+    @GetMapping("/situacao-ordenados")
+    public ResponseEntity<List<PedidoStatusResponseDTO>> obterPedidosPorSituacao(@RequestParam(required = false) String situacao) {
+        List<Pedido> pedidos = listarPedidosPorSituacaoUseCase.listarPedidosPorSituacao(situacao);
+        return ResponseEntity.ok(pedidos.stream().map(pedidoConverter::toStatusDto).toList());
     }
 
 }

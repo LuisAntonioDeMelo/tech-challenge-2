@@ -10,6 +10,7 @@ public record ProdutoRequest(
         String EAN,
         BigDecimal peso,
         BigDecimal valor,
-        String categoria
+        String categoria,
+        Integer quantidade
 ) {
 }

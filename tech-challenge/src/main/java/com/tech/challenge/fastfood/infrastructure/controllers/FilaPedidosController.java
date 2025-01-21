@@ -1,7 +1,7 @@
 package com.tech.challenge.fastfood.infrastructure.controllers;
 
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.PedidoFilaDTO;
-import com.tech.challenge.fastfood.application.usecases.FilaPedidosUseCase;
+import com.tech.challenge.fastfood.application.usecases.pedidos.FilaPedidosUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +22,9 @@ public class FilaPedidosController {
         return ResponseEntity.ok(  filaPedidosUseCase.listarPedidosNaFila());
     }
 
-    @GetMapping("/pedidos-retirada")
+    @GetMapping("/pedidos-prontos")
     public ResponseEntity<List<PedidoFilaDTO>> obterFilaDePedidosRetirada() {
-        return ResponseEntity.ok(  filaPedidosUseCase.listarPedidosNaFilaRetirada());
+        return ResponseEntity.ok(filaPedidosUseCase.listarPedidosProntos());
     }
 
 }

@@ -1,6 +1,10 @@
 package com.tech.challenge.fastfood.main;
 
-import com.tech.challenge.fastfood.application.usecases.exceptions.*;
+import com.tech.challenge.fastfood.application.usecases.cliente.exceptions.ClienteExistenteException;
+import com.tech.challenge.fastfood.application.usecases.cliente.exceptions.ClienteNotFoundException;
+import com.tech.challenge.fastfood.application.usecases.cliente.exceptions.InvalidCpfException;
+import com.tech.challenge.fastfood.application.usecases.pedidos.exceptions.PedidoNaoEncontratoException;
+import com.tech.challenge.fastfood.application.usecases.produto.exceptions.ProdutoInexistenteException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;

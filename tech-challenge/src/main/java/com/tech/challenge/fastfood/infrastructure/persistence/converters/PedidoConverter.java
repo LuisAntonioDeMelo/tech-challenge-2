@@ -2,12 +2,15 @@ package com.tech.challenge.fastfood.infrastructure.persistence.converters;
 
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.PedidoRequest;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.PedidoResponseDTO;
+import com.tech.challenge.fastfood.infrastructure.controllers.dtos.PedidoStatusResponseDTO;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.ProdutoDTO;
 import com.tech.challenge.fastfood.domain.Cliente;
 import com.tech.challenge.fastfood.domain.Pedido;
 import com.tech.challenge.fastfood.domain.Produto;
 import com.tech.challenge.fastfood.domain.SituacaoPedido;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 @Component
 public class PedidoConverter {
@@ -21,7 +24,7 @@ public class PedidoConverter {
         pedido.setHorarioInicio(pedidoRequest.horario());
         pedido.setProdutos(pedidoRequest.produtos()
                 .stream()
-                .map(p -> new Produto(p.getId(), p.getEAN()))
+                .map(p -> new Produto(p.getId(), p.getQuantidade(), p.getEAN()))
                 .toList());
         return pedido;
     }
@@ -30,7 +33,7 @@ public class PedidoConverter {
         return PedidoResponseDTO.builder()
                 .idPedido(pedido.getIdPedido())
                 .codigoPedido(pedido.getCodigoPedido())
-                .situacaoPedido(pedido.getSituacaoPedido().name())
+                .situacaoPedido(!Objects.isNull(pedido.getSituacaoPedido()) ? pedido.getSituacaoPedido().name() : null)
                 .cliente(pedido.getCliente())
                 .horarioInicio(pedido.getHorarioInicio())
                 .horarioFinalizacao(pedido.getHorarioFinalizacao())
@@ -46,6 +49,17 @@ public class PedidoConverter {
                                         .build())
                         .toList())
                 .pagamento(pedido.getPagamento())
+                .valorTotal(pedido.getValorTotalPedido())
+                .build();
+    }
+
+    public PedidoStatusResponseDTO toStatusDto(Pedido pedido) {
+        return PedidoStatusResponseDTO.builder()
+                .idPedido(pedido.getIdPedido())
+                .codigoPedido(pedido.getCodigoPedido())
+                .status(!Objects.isNull(pedido.getSituacaoPedido()) ? pedido.getSituacaoPedido().name() : null)
+                .horarioInicio(pedido.getHorarioInicio())
+                .horarioFinalizacao(pedido.getHorarioFinalizacao())
                 .valorTotal(pedido.getValorTotalPedido())
                 .build();
     }

@@ -7,6 +7,7 @@ import java.util.List;
 public interface PedidoGateway {
 
     public List<Pedido> listarPedidos();
+    public List<Pedido> listarPedidosPorSituacao(String situacao);
     public Pedido criarPedido(Pedido pedido);
     Pedido alterarSituacaoPedido(Long idPedido, String situacaoPedido);
     Pedido obterPedidoPorCPF(String cpf);

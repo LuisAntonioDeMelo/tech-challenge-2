@@ -1,10 +1,10 @@
 package com.tech.challenge.fastfood.infrastructure.gateways;
 
-import com.tech.challenge.fastfood.application.usecases.exceptions.ClientePersistenceException;
+import com.tech.challenge.fastfood.application.usecases.cliente.exceptions.ClientePersistenceException;
 import com.tech.challenge.fastfood.application.gateway.ClienteGateway;
 import com.tech.challenge.fastfood.domain.Cliente;
-import com.tech.challenge.fastfood.infrastructure.persistence.ClienteEntity;
-import com.tech.challenge.fastfood.infrastructure.persistence.ClienteRepository;
+import com.tech.challenge.fastfood.infrastructure.persistence.cliente.ClienteEntity;
+import com.tech.challenge.fastfood.infrastructure.persistence.cliente.ClienteRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

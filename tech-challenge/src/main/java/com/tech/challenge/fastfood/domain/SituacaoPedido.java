@@ -1,8 +1,7 @@
 package com.tech.challenge.fastfood.domain;
 
-import com.tech.challenge.fastfood.application.gateway.PedidoGateway;
-import com.tech.challenge.fastfood.application.usecases.patterns.NotificacaoStrategy;
-import com.tech.challenge.fastfood.application.usecases.patterns.notificacaoStrategy.*;
+import com.tech.challenge.fastfood.application.usecases.pedidos.patterns.NotificacaoStrategy;
+import com.tech.challenge.fastfood.application.usecases.pedidos.patterns.pedidoNotificacaoStrategy.*;
 
 import java.util.Arrays;
 
@@ -11,7 +10,8 @@ public enum SituacaoPedido {
     INCIAR_PREPARACAO(new InciarPreparacaoStrategy()),
     EM_PREPARACAO(new PedidoEmPreparacaoStrategy()),
     MONTAGEM(new PedidoEmMontagemStrategy()),
-    EM_FILA_RETIRADA(new PedidoEmFilaRetiradaStrategy()),
+    PRONTO(new PedidoProntoStrategy()),
+    RECEBIDO(new PedidoRecebidoStrategy()),
     FINALIZADO(new FinalizarPedidoStrategy());
 
     private final NotificacaoStrategy notificacaoStrategy;

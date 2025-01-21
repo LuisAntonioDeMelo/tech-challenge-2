@@ -1,7 +1,6 @@
 package com.tech.challenge.fastfood.infrastructure.controllers;
 
-import com.tech.challenge.fastfood.application.usecases.ClienteUseCase;
-import com.tech.challenge.fastfood.application.usecases.interactors.ClienteInteractor;
+import com.tech.challenge.fastfood.application.usecases.cliente.ClienteUseCase;
 import com.tech.challenge.fastfood.infrastructure.persistence.converters.ClienteConverter;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.ClienteRequest;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.ClienteResponseDTO;

@@ -3,7 +3,7 @@ package com.tech.challenge.fastfood.infrastructure.controllers;
 import com.tech.challenge.fastfood.infrastructure.persistence.converters.ProdutoConverter;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.ProdutoRequest;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.ProdutoResponseDTO;
-import com.tech.challenge.fastfood.application.usecases.ProdutoUseCase;
+import com.tech.challenge.fastfood.application.usecases.produto.ProdutoUseCase;
 import com.tech.challenge.fastfood.domain.Produto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

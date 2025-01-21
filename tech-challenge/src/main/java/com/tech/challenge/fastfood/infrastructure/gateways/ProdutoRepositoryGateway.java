@@ -2,11 +2,11 @@ package com.tech.challenge.fastfood.infrastructure.gateways;
 
 
 import com.tech.challenge.fastfood.application.gateway.ProdutoGateway;
-import com.tech.challenge.fastfood.application.usecases.exceptions.ProdutoInexistenteException;
+import com.tech.challenge.fastfood.application.usecases.produto.exceptions.ProdutoInexistenteException;
 import com.tech.challenge.fastfood.domain.Produto;
-import com.tech.challenge.fastfood.infrastructure.persistence.CategoriaProdutoEnum;
-import com.tech.challenge.fastfood.infrastructure.persistence.ProdutoEntity;
-import com.tech.challenge.fastfood.infrastructure.persistence.ProdutoRepository;
+import com.tech.challenge.fastfood.infrastructure.persistence.produto.CategoriaProdutoEnum;
+import com.tech.challenge.fastfood.infrastructure.persistence.produto.ProdutoEntity;
+import com.tech.challenge.fastfood.infrastructure.persistence.produto.ProdutoRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;

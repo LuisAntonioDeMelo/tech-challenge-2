@@ -23,10 +23,12 @@ public class Produto {
     private BigDecimal peso;
     private BigDecimal valor;
     private CategoriaProduto categoriaProduto;
+    private Integer quantidade;
     private List<Pedido> pedidos;
 
-    public Produto(Long id, String ean) {
+    public Produto(Long id, Integer quantidade, String ean) {
         this.id = id;
         this.EAN = ean;
+        this.quantidade = quantidade;
     }
 }

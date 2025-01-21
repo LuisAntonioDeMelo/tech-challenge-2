@@ -19,5 +19,6 @@ public class ProdutoResponseDTO {
     private BigDecimal valor;
     private String categoria;
     private Long idPedido;
+    private Integer quantidade;
 
 }

@@ -29,8 +29,11 @@ public class PagamentoController {
         return ResponseEntity.ok(processarPagamentoUseCase.processarPagamento(idPedido));
     }
 
-    @PostMapping("/criar-pagamento-pedido/{id}")
-    public ResponseEntity<?> criarPagamentoPedido(@PathVariable Long id, @RequestParam String tipoPagamento) {
+    @PostMapping("/criar-pagamento-pedido")
+    public ResponseEntity<?> criarPagamentoPedido(
+            @RequestParam("idPedido") Long id,
+            @RequestParam("tipoPagamento") String tipoPagamento
+    ) {
         Pedido pedido = criarPagamentoPedidoUseCase.criarPagamentoPedido(id, tipoPagamento);
         return ResponseEntity.ok(pedidoConverter.toDto(pedido));
     }
