@@ -4,4 +4,5 @@ import com.tech.challenge.fastfood.domain.Pagamento;
 
 public interface PagamentoGateway {
     Pagamento consultarStatusPagamento(Long idPedido);
+    Pagamento aprovarPagamento(Long id, String aprovado);
 }

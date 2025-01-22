@@ -1,26 +1,23 @@
 package com.tech.challenge.fastfood.application.usecases.pagamento.interactors;
 
-import com.mercadopago.MercadoPagoConfig;
-import com.mercadopago.client.payment.PaymentClient;
-import com.mercadopago.resources.payment.Payment;
+import com.tech.challenge.fastfood.application.gateway.PagamentoGateway;
 import com.tech.challenge.fastfood.application.usecases.pagamento.NotificacaoPagamentoUseCase;
+import com.tech.challenge.fastfood.domain.Pagamento;
 import com.tech.challenge.fastfood.infrastructure.controllers.dtos.NotificacaoPagamento;
 
 public class NotificacaoPagamentoInteractor implements NotificacaoPagamentoUseCase {
 
-    @Override
-    public void processarPagamentoAprovado(NotificacaoPagamento notificacao) {
-//        MercadoPagoConfig.setAccessToken("SEU_ACCESS_TOKEN");
-//        PaymentClient paymentClient = new PaymentClient();
-//        Payment payment = paymentClient.get(paymentId);
-//        String status = payment.getStatus();
-//        if (status.equals("approved")) {
-//            // Atualizar status do pedido
-//        }
+    private final PagamentoGateway pagamentoGateway;
+
+    public NotificacaoPagamentoInteractor(PagamentoGateway pagamentoGateway) {
+        this.pagamentoGateway = pagamentoGateway;
     }
 
     @Override
-    public void processarPagamentoRecusado(NotificacaoPagamento notificacao) {
-
+    public Pagamento processarPagamentoAprovado(NotificacaoPagamento notificacao) {
+        Pagamento pagamento = pagamentoGateway.consultarStatusPagamento(Long.getLong(notificacao.getPaymentId()));
+        pagamento = pagamentoGateway.aprovarPagamento(pagamento.getId(), "APROVADO");
+        return  pagamento;
     }
+
 }

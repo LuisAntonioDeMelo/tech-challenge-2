@@ -1,22 +1,18 @@
 package com.tech.challenge.fastfood.infrastructure.controllers.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class NotificacaoPagamento {
-    private String notification_type;
-    private Message message;
 
-    @Data
-    public static class Message {
-        private String reference_code;
-        private String external_reference;
-        private double value;
-        private String status;
-        private String payment_date;
-        private String end_to_end;
-    }
-
+    private String paymentId;
+    private String externalReference;
+    private Map<String, Object> payload;
 }

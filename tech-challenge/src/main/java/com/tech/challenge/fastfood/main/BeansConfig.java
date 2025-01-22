@@ -71,8 +71,8 @@ public class BeansConfig {
     }
 
     @Bean
-    public NotificacaoPagamentoUseCase notificacaoPagamentoUseCase() {
-        return new NotificacaoPagamentoInteractor();
+    public NotificacaoPagamentoUseCase notificacaoPagamentoUseCase(PagamentoGateway pagamentoGateway) {
+        return new NotificacaoPagamentoInteractor(pagamentoGateway);
     }
 
     @Bean

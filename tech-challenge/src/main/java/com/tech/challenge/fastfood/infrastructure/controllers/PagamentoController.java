@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("v1/pagamentos")
 @RequiredArgsConstructor
@@ -25,15 +27,27 @@ public class PagamentoController {
 
 
     @PostMapping("/webhook/notificacao")
-    public ResponseEntity<String> receberNotificacaoPagamento(@RequestBody NotificacaoPagamento notificacao) {
-        System.out.println("Notificação recebida: " + notificacao);
-        if ("paid".equals(notificacao.getMessage().getStatus())) {
-            notificacaoPagamentoUseCase.processarPagamentoAprovado(notificacao);
-        } else {
-            return ResponseEntity.ba33333333333dRequest().body("Status de pagamento desconhecido.");
-        }
+    public ResponseEntity<String> receberNotificacaoPagamento(@RequestBody Map<String,Object> map) {
+        System.out.println("Notificação recebida: " + map);
+        if ("paid".equals(map.get(""))) {
 
+        } else {
+            return ResponseEntity.badRequest().body("Status de pagamento desconhecido.");
+        }
         return ResponseEntity.ok("Notificação processada com sucesso.");
+    }
+
+    @PostMapping
+    public ResponseEntity<String> handleNotification(@RequestBody Map<String, Object> payload) {
+        System.out.println("Notificação recebida: " + payload);
+        String paymentId = (String) payload.get("id");
+        String externalReference = (String) payload.get("external_reference");
+
+        System.out.println("Payment ID: " + paymentId);
+        System.out.println("External Reference: " + externalReference);
+        notificacaoPagamentoUseCase.processarPagamentoAprovado(new NotificacaoPagamento(paymentId, externalReference, payload));
+
+        return ResponseEntity.ok("OK");
     }
 
 
