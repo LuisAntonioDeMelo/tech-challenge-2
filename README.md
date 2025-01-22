@@ -15,6 +15,21 @@ Foi criado um arquivo de configuração ./deploy.sh
 
 ele será responsável por rodar todos os aquivos de configuração para o cluster do docker
 
+#### *swagger*
+
+http://localhost:30000/swagger-ui/index.html  kubenertes
+
+http://localhost:8080/swagger-ui/index.html  localhost
+
+#### *jsons*
+
+importar  as collections de teste no arquivo 
+
+file> Collections-endpoints -  tech challenge.json
+
+#### Ngrok
+
+ngrok.yaml ou configurar o compose do ngrok
 
 ### Instalando o Kind no windows:
 
