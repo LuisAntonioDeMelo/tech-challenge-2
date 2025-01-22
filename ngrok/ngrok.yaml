@@ -1,0 +1,8 @@
+version: 3
+agent:
+  authtoken: 2rvMWJz6nZ063tSqWAUZy86txVH_cBRjv4omWgU2jWBDJgNu
+endpoints:
+  - name: api-local
+    url: stinkbug-concise-wildly.ngrok-free.app
+    upstream:
+      url: 8080
